@@ -17,7 +17,9 @@ const addSuffix = (version, suffix) => {
 const main = async () => {
     try {
         const suffix = core.getInput('suffix');
-        const packageData = fs.readFileSync(path.join(__dirname, 'package.json'), 'utf8');
+        const workspace = process.env.GITHUB_WORKSPACE;
+        const dir = path.resolve(workspace);
+        const packageData = fs.readFileSync(path.join(dir, 'package.json'), 'utf8');
         const package = JSON.parse(packageData);
         const currentVersion = package.version;
         const newVersion = addSuffix(currentVersion, suffix);

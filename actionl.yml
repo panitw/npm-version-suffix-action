@@ -1,0 +1,10 @@
+name: 'NPM package version suffix action'
+description: 'Action to running suffix to the package version'
+inputs:
+  suffix:
+    description: 'Suffix to add to the version'
+    required: true
+    default: 'rc'
+runs:
+  using: 'node14'
+  main: 'dist/index.js'
